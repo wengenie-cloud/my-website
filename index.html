@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DreamCanvas AI 生图工具</title>
+    <meta
+      name="description"
+      content="DreamCanvas 是一个中文 AI 生图网站界面示例，支持提示词、风格、尺寸和示例作品预览。"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#" aria-label="DreamCanvas 首页">
+        <span class="brand-mark">DC</span>
+        <span>DreamCanvas</span>
+      </a>
+      <nav class="main-nav" aria-label="主导航">
+        <a href="#creator">AI 生图</a>
+        <a href="#styles">风格库</a>
+        <a href="#workflow">流程</a>
+        <a href="#gallery">作品</a>
+        <a href="#pricing">价格</a>
+      </nav>
+      <button class="nav-action" type="button">开始创作</button>
+    </header>
+
+    <main>
+      <section class="hero" id="creator">
+        <div class="hero-copy">
+          <p class="eyebrow">中文提示词友好 · 文生图 · 图像灵感工作台</p>
+          <h1>把一句想法生成高质量视觉作品</h1>
+          <p class="hero-text">
+            输入描述、选择风格和比例，DreamCanvas 会把创意整理成可预览的作品。适合电商主图、社媒海报、室内灵感和概念场景。
+          </p>
+          <div class="hero-actions">
+            <a class="primary-link" href="#generator">立即生成</a>
+            <a class="secondary-link" href="#gallery">查看示例</a>
+          </div>
+        </div>
+
+        <form class="generator-panel" id="generator">
+          <div class="panel-head">
+            <div>
+              <span class="panel-kicker">AI Image Generator</span>
+              <h2>生图工作台</h2>
+            </div>
+            <span class="status-pill">高速模式</span>
+          </div>
+
+          <label class="prompt-box" for="prompt">
+            <span>提示词</span>
+            <textarea id="prompt" rows="5">一只磨砂白智能音箱，柔和青色和珊瑚色灯光，电商海报级产品摄影，干净背景</textarea>
+          </label>
+
+          <div class="control-grid" aria-label="生成设置">
+            <label>
+              风格
+              <select id="style">
+                <option>产品摄影</option>
+                <option>电影感</option>
+                <option>室内设计</option>
+                <option>奇幻概念</option>
+              </select>
+            </label>
+            <label>
+              尺寸
+              <select id="ratio">
+                <option>4:5 竖图</option>
+                <option>16:9 横幅</option>
+                <option>1:1 方图</option>
+              </select>
+            </label>
+            <label>
+              细节强度
+              <input id="detail" type="range" min="1" max="10" value="8" />
+            </label>
+          </div>
+
+          <div class="style-chips" id="styleChips" aria-label="快捷风格">
+            <button class="chip is-active" type="button" data-style="产品摄影">产品摄影</button>
+            <button class="chip" type="button" data-style="电影感">电影感</button>
+            <button class="chip" type="button" data-style="室内设计">室内设计</button>
+            <button class="chip" type="button" data-style="奇幻概念">奇幻概念</button>
+          </div>
+
+          <button class="generate-button" type="button" id="generateButton">
+            <span class="button-icon" aria-hidden="true"></span>
+            生成图片
+          </button>
+
+          <div class="inline-result" id="inlineResult" aria-live="polite">
+            <img src="assets/hero-studio.png" alt="当前生成结果缩略图" />
+            <div>
+              <span id="inlineStatus">等待生成</span>
+              <strong id="inlineTitle">选择风格后点击生成</strong>
+            </div>
+          </div>
+        </form>
+      </section>
+
+      <section class="preview-band" aria-label="生成预览">
+        <div class="preview-copy">
+          <span class="section-label">Live Preview</span>
+          <h2>实时预览作品方向</h2>
+          <p>点击工作台里的生成按钮，会根据当前风格切换预览，并模拟生成进度。</p>
+        </div>
+        <div class="hero-visual">
+          <img id="previewImage" src="assets/hero-studio.png" alt="AI 生图工作台主视觉预览" />
+          <div class="floating-card result-card">
+            <span id="resultStatus">准备就绪</span>
+            <strong id="resultTitle">产品摄影 · 4:5 竖图</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="styles">
+        <div class="section-head">
+          <span class="section-label">Style Presets</span>
+          <h2>常用场景一键成片</h2>
+        </div>
+        <div class="feature-grid">
+          <article>
+            <span class="feature-icon">01</span>
+            <h3>电商产品图</h3>
+            <p>生成精修质感、自然阴影和适合投放的商品画面。</p>
+          </article>
+          <article>
+            <span class="feature-icon">02</span>
+            <h3>品牌社媒图</h3>
+            <p>适配小红书、公众号封面和广告素材的视觉节奏。</p>
+          </article>
+          <article>
+            <span class="feature-icon">03</span>
+            <h3>空间灵感图</h3>
+            <p>快速探索软装、灯光和材质搭配，减少反复找参考。</p>
+          </article>
+          <article>
+            <span class="feature-icon">04</span>
+            <h3>概念世界观</h3>
+            <p>为游戏、故事和视觉提案生成统一的氛围设定。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section split-section" id="workflow">
+        <div class="section-head compact">
+          <span class="section-label">Workflow</span>
+          <h2>三步完成创作</h2>
+          <p>保留参考站的轻量流程感，但把信息压得更适合真实工具页面。</p>
+        </div>
+        <ol class="steps">
+          <li>
+            <span>1</span>
+            <div>
+              <h3>写下画面</h3>
+              <p>用中文描述主体、场景、光线和用途。</p>
+            </div>
+          </li>
+          <li>
+            <span>2</span>
+            <div>
+              <h3>选择预设</h3>
+              <p>套用产品摄影、电影感、室内设计等成熟风格。</p>
+            </div>
+          </li>
+          <li>
+            <span>3</span>
+            <div>
+              <h3>下载使用</h3>
+              <p>生成多版本后挑选最佳结果，用于内容、提案或投放。</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section class="section" id="gallery">
+        <div class="section-head">
+          <span class="section-label">Gallery</span>
+          <h2>AI 作品样张</h2>
+        </div>
+        <div class="gallery-grid">
+          <article class="gallery-item large">
+            <img src="assets/hero-studio.png" alt="AI 创作工作台横幅" />
+            <div>
+              <span>界面概念</span>
+              <strong>创作工作台横幅</strong>
+            </div>
+          </article>
+          <article class="gallery-item">
+            <img src="assets/gallery-product.png" alt="智能音箱产品渲染图" />
+            <div>
+              <span>产品摄影</span>
+              <strong>未来感智能音箱</strong>
+            </div>
+          </article>
+          <article class="gallery-item">
+            <img src="assets/gallery-interior.png" alt="阳光客厅室内设计图" />
+            <div>
+              <span>室内设计</span>
+              <strong>阳光客厅提案</strong>
+            </div>
+          </article>
+          <article class="gallery-item">
+            <img src="assets/gallery-fantasy.png" alt="幻想浮空岛概念图" />
+            <div>
+              <span>概念场景</span>
+              <strong>浮空岛世界观</strong>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="cta-section" id="pricing">
+        <span class="section-label">Start Now</span>
+        <h2>开始搭建你的 AI 视觉素材库</h2>
+        <p>这个页面已经包含首页、生成器、风格库、流程、作品展示和行动入口，可继续接入真实生图 API。</p>
+        <a class="primary-link" href="#creator">返回工作台</a>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>DreamCanvas</span>
+      <span>AI image generator website concept</span>
+    </footer>
+
+    <script src="script.js?v=2"></script>
+  </body>
+</html>
